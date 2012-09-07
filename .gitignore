@@ -1,4 +1,8 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+settings_pre.py
+settings_post.py
+*~
+lmlego.db
+.*
