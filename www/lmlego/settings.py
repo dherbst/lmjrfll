@@ -113,6 +113,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'registration',
     'h5bpstrap',
     'lmlego',
 )
@@ -145,3 +146,6 @@ LOGGING = {
         },
     }
 }
+
+ACCOUNT_ACTIVATION_DAYS=2
+LOGIN_REDIRECT_URL='/expo/'

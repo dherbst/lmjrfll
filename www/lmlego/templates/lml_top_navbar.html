@@ -33,7 +33,10 @@
               <button type="submit" class="btn">Sign in</button>
             </form>
 -->
-<ul class="nav pull-right"><li><a href="/accounts/login/">Login</a></li></ul>
+<ul class="nav pull-right">
+{% if request.user.is_anonymous %}<li><a href="/accounts/login/">Login</a></li>
+{% else %}<li>{{request.user.username}}<a href="/accounts/logout/">Logout</a></li>{% endif %}
+</ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
