@@ -34,8 +34,8 @@
             </form>
 -->
 <ul class="nav pull-right">
-{% if request.user.is_anonymous %}<li><a href="/accounts/login/">Login</a></li>
-{% else %}<li>{{request.user.username}}<a href="/accounts/logout/">Logout</a></li>{% endif %}
+{% if request.user.is_authenticated %}<li><a href="/accounts/logout/">{{request.user.username}} Logout</a></li>
+{% else %}<li><a href="/accounts/login/">Login</a></li>{% endif %}
 </ul>
           </div><!--/.nav-collapse -->
         </div>
