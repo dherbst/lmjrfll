@@ -7,8 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^$', 'lmlego.views.home', name='home'),
-
     (r'^accounts/', include('registration.backends.default.urls')),
-
+    (r'^expo/', include('expo.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
