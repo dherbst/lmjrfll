@@ -1,0 +1,4 @@
+baseurl = "https://lowermerionjrfll.com/"
+languageCode = "en-us"
+title = "Lower Merion Junior First Lego League"
+publishdir = "../src/lmjrfll/web"
