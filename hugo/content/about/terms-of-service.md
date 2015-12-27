@@ -1,7 +1,7 @@
 +++
 date = "2015-12-27T15:07:14-05:00"
 draft = false
-title = "terms of service"
+title = "Terms of Service"
 
 +++
 # LowerMerionJrFLL.com Terms of Use
