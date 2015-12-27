@@ -30,3 +30,5 @@ _testmain.go
 *.test
 *.prof
 *~
+# do not check in the generated html from hugo
+src/lmjrfll/web/*
