@@ -7,7 +7,13 @@ import (
 	"testing"
 )
 
-func IndexHandlerTest(t *testing.T) {
+func TestIndexHandler(t *testing.T) {
+	_, done, err := aetest.NewContext()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer done()
+
 	inst, err := aetest.NewInstance(nil)
 	if err != nil {
 		t.Errorf("Failed to create instance: %v", err)
