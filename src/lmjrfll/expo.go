@@ -1,6 +1,8 @@
 package lmjrfll
 
 import (
+	"golang.org/x/net/context"
+	"google.golang.org/appengine/datastore"
 	"time"
 )
 
@@ -39,4 +41,16 @@ type TeamMember struct {
 	FirstName string
 	LastName  string
 	Email     string
+}
+
+// Returns the current Expo, or an error that there is no current Expo
+func GetCurrentExpo(c context.Context) (*Expo, error) {
+	var expo Expo
+	query := datastore.NewQuery("Expo").Filter("IsCurrent =", true)
+	results := query.Run(c)
+	_, err := results.Next(&expo)
+	if err != nil {
+		return nil, err
+	}
+	return &expo, nil
 }
