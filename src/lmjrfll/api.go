@@ -53,6 +53,18 @@ func Api1UserProfileHandler(w http.ResponseWriter, r *http.Request) {
 // Returns the details of the current Expo
 func Api1ExpoCurrentHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	c := appengine.NewContext(r)
+	expo, err := GetCurrentExpo(c)
+	if err != nil {
+		fmt.Fprintf(w, "%s", "{ \"NumTeams\": 0 }")
+		return
+	}
 
-	fmt.Fprintf(w, "%s", "{}")
+	datajson, err := json.Marshal(expo)
+	if err != nil {
+		http.Error(w, "Internal Service Error", http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Fprintf(w, "%s", datajson)
 }

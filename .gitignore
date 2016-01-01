@@ -32,3 +32,5 @@ _testmain.go
 *~
 # do not check in the generated html from hugo
 src/lmjrfll/web/*
+coverage.out
+coverage.html

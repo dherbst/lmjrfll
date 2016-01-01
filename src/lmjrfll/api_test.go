@@ -38,6 +38,68 @@ func TestApi1UserProfileHandler(t *testing.T) {
 
 }
 
-func TestApi1ExpoCurrentHandler(t *testing.T) {
+func TestApi1ExpoCurrentHandlerNoExpo(t *testing.T) {
+	inst, err := aetest.NewInstance(nil)
+	if err != nil {
+		t.Errorf("Failed to create instance: %v", err)
+	}
+	defer inst.Close()
 
+	request, err := inst.NewRequest("GET", "/api/1/expo/current", nil)
+	if err != nil {
+		t.Errorf("Error creating new instance %v", err)
+	}
+
+	response := httptest.NewRecorder()
+	Api1ExpoCurrentHandler(response, request)
+	if response.Code != http.StatusOK {
+		t.Errorf("Did not get StatusOK got %v", response.Code)
+	}
+	data, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		t.Errorf("Error reading body %v", err)
+	}
+	expected := "{ \"NumTeams\": 0 }"
+	if string(data) != expected {
+		t.Errorf("Expected  %s got %v", expected, string(data))
+	}
+}
+
+func TestApi1ExpoCurrentHandlerWithExpo(t *testing.T) {
+	inst, err := aetest.NewInstance(nil)
+	if err != nil {
+		t.Errorf("Failed to create instance: %v", err)
+	}
+	defer inst.Close()
+
+	c, done, err := aetest.NewContext()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer done()
+	expo := Expo{NumTeams: 16, IsCurrent: true}
+	key, err := SaveExpo(c, &expo)
+	if err != nil {
+		t.Errorf("Error saving expo to the datastore %v", err)
+	}
+	t.Logf("Key=%v", key)
+
+	request, err := inst.NewRequest("GET", "/api/1/expo/current", nil)
+	if err != nil {
+		t.Errorf("Error creating new instance %v", err)
+	}
+
+	response := httptest.NewRecorder()
+	Api1ExpoCurrentHandler(response, request)
+	if response.Code != http.StatusOK {
+		t.Errorf("Did not get StatusOK got %v", response.Code)
+	}
+	data, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		t.Errorf("Error reading body %v", err)
+	}
+	expected := "{ \"NumTeams\": 0 }"
+	if string(data) != expected {
+		t.Errorf("Expected  %s got %v", expected, string(data))
+	}
 }

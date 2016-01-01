@@ -54,3 +54,12 @@ func GetCurrentExpo(c context.Context) (*Expo, error) {
 	}
 	return &expo, nil
 }
+
+// Write the expo to the datastore, returns the key or an error
+func SaveExpo(c context.Context, expo *Expo) (*datastore.Key, error) {
+	key, err := datastore.Put(c, datastore.NewIncompleteKey(c, "expo", nil), expo)
+	if err != nil {
+		return nil, err
+	}
+	return key, nil
+}
