@@ -56,7 +56,7 @@ func Api1ExpoCurrentHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	expo, err := GetCurrentExpo(c)
 	if err != nil {
-		fmt.Fprintf(w, "%s", "{ \"NumTeams\": 0 }")
+		fmt.Fprintf(w, "%s", "{ \"NumTeams\": 0, \"NumRegistered\": 0 }")
 		return
 	}
 
