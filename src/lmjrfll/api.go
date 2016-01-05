@@ -18,6 +18,7 @@ type UserProfileData struct {
 	Email     string
 	LogoutUrl string
 	LoginUrl  string
+	IsAdmin   bool
 }
 
 // If the user is not logged in, then return the login url.  Otherwise return a json
@@ -41,6 +42,8 @@ func Api1UserProfileHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	url, _ := user.LogoutURL(ctx, "/")
 	data.LogoutUrl = url
+	data.Email = u.Email
+	data.IsAdmin = u.Admin
 	datajson, err := json.Marshal(data)
 	if err != nil {
 		http.Error(w, "Internal Service Error", http.StatusInternalServerError)
