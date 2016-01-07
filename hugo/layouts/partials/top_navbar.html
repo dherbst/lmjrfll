@@ -11,8 +11,8 @@
         <ul class="nav">
           <li class="active"><a href="/index.html">Home</a></li>
           <li><a href="/about/aboutus/index.html">About</a></li>
-          <li><a href="/expo/">My Team</a></li>
-          <li><a href="/expo/register_team/">My Team</a></li>
+          <li ng-if="user.IsLoggedIn"><a href="/expo/">My Team</a></li>
+          <li ng-if="!user.IsLoggedIn"><a href="/expo/register_team/">My Team</a></li>
           <!--              <li><a href="#">Contact</a></li>
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
