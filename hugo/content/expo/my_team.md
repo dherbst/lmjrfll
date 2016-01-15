@@ -4,8 +4,8 @@ draft = false
 title = "My Team"
 
 +++
-The expo date is [[expo.Date]]
+The expo date is [[expo.ExpoDate]]
 
 Your team name is [[ user.TeamName ]]
 
-Paid status: [[ user.IsPaid ]]
+Paid status: [[ user.CurrentTeam.IsPaid ]]
