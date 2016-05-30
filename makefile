@@ -1,6 +1,6 @@
 GOPATH := ${PWD}
 
-all: test
+all: hugo-build test
 	echo ${GOPATH}
 
 test:
@@ -12,3 +12,9 @@ get:
 show-cover:
 	GOPATH=${GOPATH} goapp tool cover -html=coverage.out -o coverage.html
 	open coverage.html
+
+hugo-build:
+	cd hugo && hugo
+
+serve:
+	dev_appserver.py src/lmjrfll
