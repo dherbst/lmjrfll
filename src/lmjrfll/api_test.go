@@ -59,7 +59,7 @@ func TestApi1ExpoCurrentHandlerNoExpo(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error reading body %v", err)
 	}
-	expected := "{ \"NumTeams\": 0 }"
+	expected := "{ \"NumTeams\": 0, \"NumRegistered\": 0 }"
 	if string(data) != expected {
 		t.Errorf("Expected  %s got %v", expected, string(data))
 	}
@@ -98,7 +98,7 @@ func TestApi1ExpoCurrentHandlerWithExpo(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error reading body %v", err)
 	}
-	expected := "{ \"NumTeams\": 0 }"
+	expected := "{ \"NumTeams\": 0, \"NumRegistered\": 0 }"
 	if string(data) != expected {
 		t.Errorf("Expected  %s got %v", expected, string(data))
 	}
