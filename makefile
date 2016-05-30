@@ -18,3 +18,6 @@ hugo-build:
 
 serve:
 	dev_appserver.py src/lmjrfll
+
+deploy:
+	cd src/lmjrfll && appcfg.py --noauth_local_webserver --no_cookies update .
