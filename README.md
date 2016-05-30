@@ -11,7 +11,7 @@ It has been created using Google AppEngine with golang as the backend, with [get
 Deployment
 ==========
 
-    appcfg.py --noauth_local_webserver --oauth2 --no_cookies update .
+    appcfg.py --noauth_local_webserver --no_cookies update .
 
 
 License
